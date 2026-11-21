@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Studio Aurora – Cabelo, unhas e estética</title>
+<meta name="description" content="Studio Aurora: cabelo, unhas e estética, por ordem de chegada, de segunda a sábado. Site demonstrativo.">
+<meta name="theme-color" content="#f4ede3">
+<meta property="og:title" content="Studio Aurora – Cabelo, unhas e estética">
+<meta property="og:description" content="Seu momento de brilhar. Atendimento por ordem de chegada, de segunda a sábado.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%234e1527'/%3E%3Cpath d='M10 34a14 14 0 0 1 28 0M24 8v6M6 34h36' fill='none' stroke='%23e0be96' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ BASE ============ */
+:root{
+  --bg:#f4ede3; --paper:#fbf7f1; --sand:#e6d8c5; --ink:#2a1a20; --muted:#6a555e;
+  --wine:#4e1527; --wine-deep:#3a0f1d; --rose:#9c443f; --gold:#b08d57; --line:#d9cbb8;
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gut:clamp(1.25rem,4vw,3rem); --max:1200px; --hdr:72px;
+  --edge:max(var(--gut),calc((100vw - var(--max)) / 2));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + 8px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
+body.menu-open{overflow:hidden}
+h1,h2,h3,p,ul,dl,dd,figure{margin:0}
+ul{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{width:min(var(--max),100% - 2 * var(--gut));margin-inline:auto}
+section{padding:clamp(4.5rem,9vw,8rem) 0}
+
+h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--wine);line-height:1}
+h2{font-size:clamp(2.3rem,5vw,3.7rem);line-height:1.04;letter-spacing:-.01em}
+h2 em,h1 em{font-style:italic;color:var(--rose)}
+.eyebrow{font:500 .72rem/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--rose)}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 1.9rem;background:var(--wine);color:#fbf1ea;border:1px solid var(--wine);border-radius:2px;font:500 .8rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .3s,border-color .3s,color .3s}
+.btn:hover{background:var(--rose);border-color:var(--rose)}
+.btn--sm{min-height:44px;padding:0 1.15rem;font-size:.7rem}
+.btn--light{background:var(--bg);color:var(--wine);border-color:var(--bg)}
+.btn--light:hover{background:#d9b97f;border-color:#d9b97f;color:var(--wine-deep)}
+.btn--ghost{background:transparent;color:var(--bg);border-color:rgba(244,237,227,.5)}
+.btn--ghost:hover{background:var(--bg);border-color:var(--bg);color:var(--wine)}
+.link{display:inline-flex;align-items:center;min-height:44px;font:500 .8rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--wine);border-bottom:1px solid var(--gold);transition:color .3s,border-color .3s}
+.link:hover{color:var(--rose);border-color:var(--rose)}
+
+/* ============ FOTOS (com espaço provisório) ============ */
+.ph{position:relative;overflow:hidden;background:var(--sand);color:rgba(78,21,39,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem}
+.ph::after{content:"";position:absolute;inset:14px;border:1px solid currentColor;opacity:.3;pointer-events:none}
+.ph--wine{background:var(--wine);color:rgba(224,190,150,.6)}
+.ph--blush{background:#dcc0b1}
+.ph--taupe{background:#cdb9a2}
+.ph svg.art{width:min(34%,140px);height:auto;aspect-ratio:1;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
+.ph__path{font:500 .62rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.ph.has::after,.ph.has svg.art,.ph.has .ph__path{display:none}
+.tag{position:absolute;left:0;bottom:0;z-index:2;padding:.6rem .95rem;background:var(--paper);color:var(--wine);font:500 .66rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+
+/* ============ CABEÇALHO ============ */
+.top{position:fixed;inset:0 0 auto;z-index:60;padding-top:env(safe-area-inset-top,0px);transition:background .35s,box-shadow .35s}
+.top.is-scrolled,.top.is-open{background:rgba(251,247,241,.97);box-shadow:0 1px 0 var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:var(--hdr)}
+.bar>*{position:relative;z-index:2}
+.logo{font:600 1.7rem/1 var(--serif);color:var(--wine)}
+.logo small{display:block;margin-bottom:3px;font:500 .58rem/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--rose)}
+.top nav{position:static;z-index:auto}
+.top nav ul{display:flex;gap:2.4rem}
+.top nav a{position:relative;display:block;padding:.4rem 0;font:500 .76rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+.top nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--rose);transition:right .35s}
+.top nav a:hover::after{right:0}
+.bar__end{display:flex;align-items:center;gap:.5rem}
+.burger{display:none;width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.burger span{position:absolute;left:11px;right:11px;height:1.5px;background:var(--wine);transition:transform .3s,top .3s}
+.burger span:nth-child(1){top:17px}.burger span:nth-child(2){top:26px}
+.burger[aria-expanded="true"] span:nth-child(1){top:21.5px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){top:21.5px;transform:rotate(-45deg)}
+
+/* ============ 1. APRESENTAÇÃO ============ */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);min-height:100svh;padding:0}
+.hero__txt{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:calc(var(--hdr) + 3rem) clamp(1.5rem,4vw,4.5rem) 3.5rem var(--edge)}
+.hero h1{font-size:clamp(3.1rem,6.6vw,6.6rem);line-height:.93;letter-spacing:-.025em;margin:1.5rem 0 1.6rem}
+.hero .lead{max-width:33rem;color:var(--muted);font-size:1.08rem}
+.hero__cta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 2rem;margin-top:2.2rem}
+.hero__meta{display:flex;flex-wrap:wrap;gap:.4rem 1.8rem;width:100%;max-width:33rem;margin-top:3rem;padding-top:1.1rem;border-top:1px solid var(--line);font:500 .68rem/1.6 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.hero__img{position:relative;margin:calc(var(--hdr) + 1rem) var(--edge) 2rem 0;min-height:60svh}
+.hero__img .ph{position:absolute;inset:0}
+.hero__img svg.art{width:min(38%,200px)}
+.hero__txt>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero__txt>:nth-child(2){animation-delay:.08s}.hero__txt>:nth-child(3){animation-delay:.16s}.hero__txt>:nth-child(4){animation-delay:.24s}.hero__txt>:nth-child(5){animation-delay:.32s}
+.hero__img{animation:fade 1.3s .1s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* ============ 2. SERVIÇOS ============ */
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.2rem 3rem;margin-bottom:clamp(2.2rem,5vw,3.6rem)}
+.sec-head h2{margin-top:1rem}
+.sec-head p{max-width:24rem;color:var(--muted)}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.25rem,3vw,2.6rem)}
+.svc article:nth-child(2){margin-top:2.6rem}
+.svc .ph{aspect-ratio:4/5}
+.svc__t{display:flex;align-items:baseline;justify-content:space-between;margin:1.3rem 0 .4rem}
+.svc h3{font-size:2.3rem}
+.svc__n{font:500 .7rem/1 var(--sans);letter-spacing:.24em;color:var(--rose)}
+.svc article>p{color:var(--muted);margin-bottom:1.1rem}
+.svc ul{border-top:1px solid var(--line)}
+.svc li{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.svc li small{font:500 .62rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--rose);white-space:nowrap}
+.svc-note{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 2rem;margin-top:clamp(2.5rem,5vw,3.5rem);color:var(--muted)}
+
+/* ============ 3. GALERIA ============ */
+.gal-sec{background:var(--paper)}
+.gal{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(150px,22vw,290px);gap:clamp(.6rem,1.4vw,1rem)}
+.gal .ph{height:100%}
+.g1{grid-column:1/7;grid-row:1/3}
+.g2{grid-column:7/10;grid-row:1}
+.g3{grid-column:10/13;grid-row:1}
+.g4{grid-column:7/13;grid-row:2}
+.gal .g1 svg.art{width:min(26%,130px)}
+
+/* ============ 4. CONTATO ============ */
+.contact{background:var(--wine);color:#f1e2d8}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,7vw,6rem);align-items:start}
+.contact .eyebrow{color:#d9b97f}
+.contact h2{color:#fbf1ea;margin:1rem 0 1.2rem}
+.contact h2 em{color:#e6a99d}
+.contact .lead{max-width:26rem;opacity:.85}
+.contact__cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.info{border-bottom:1px solid rgba(255,255,255,.18)}
+.info>div{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;padding:1.4rem 0;border-top:1px solid rgba(255,255,255,.18)}
+.info dt{padding-top:.45rem;font:500 .66rem/1.4 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#d9b97f}
+.info dd{font:500 1.55rem/1.25 var(--serif);color:#fbf1ea}
+.info dd b{font-weight:500}
+.info dd span{display:block;margin-top:.2rem;font:400 .95rem/1.5 var(--sans);opacity:.8}
+.demo{display:inline-block;margin-left:.6rem;vertical-align:middle;font:500 .58rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#d9b97f;border:1px solid rgba(217,185,127,.55);padding:.28rem .5rem;border-radius:2px}
+
+/* ============ RODAPÉ ============ */
+.foot{background:var(--wine-deep);color:rgba(241,226,216,.72);padding:1.6rem 0 calc(1.6rem + env(safe-area-inset-bottom,0px));font-size:.82rem}
+.foot .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem 2rem}
+.foot a{display:inline-flex;align-items:center;min-height:44px;color:#d9b97f}
+.foot a:hover{color:#fff}
+
+/* ============ REVELAR AO ROLAR (nunca esconde sem JS) ============ */
+.anim .rv{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.anim .rv.in{opacity:1;transform:none}
+
+/* ============ RESPONSIVO ============ */
+@media (max-width:980px){
+  .svc{grid-template-columns:1fr 1fr}
+  .svc article:nth-child(2){margin-top:0}
+  .svc article:nth-child(3){grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(1.25rem,3vw,2.6rem);align-items:start}
+  .svc article:nth-child(3) .ph{grid-row:1/4}
+  .contact .wrap{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  :root{--hdr:64px}
+  .burger{display:block}
+  .top nav{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:center;padding:var(--hdr) var(--gut) 2rem;background:var(--paper);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+  .top nav.open{opacity:1;visibility:visible}
+  .top nav ul{flex-direction:column;gap:0}
+  .top nav a{padding:1.1rem 0;border-bottom:1px solid var(--line);font:500 2.5rem/1 var(--serif);letter-spacing:0;text-transform:none;color:var(--wine)}
+  .top nav a::after{display:none}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero__txt{padding:calc(var(--hdr) + 2.2rem) var(--gut) 2.2rem}
+  .hero h1{margin:1.2rem 0 1.2rem}
+  .hero__meta{margin-top:2rem}
+  .hero__img{margin:0 var(--gut) 1rem;min-height:0;aspect-ratio:4/4.8}
+}
+@media (max-width:700px){
+  .svc{grid-template-columns:1fr}
+  .svc .ph{aspect-ratio:4/3.6}
+  .svc article:nth-child(3){display:block}
+  .gal{grid-template-columns:1fr 1fr;grid-auto-rows:44vw}
+  .g1{grid-column:1/-1;grid-row:auto/span 2}
+  .g2,.g3{grid-column:auto;grid-row:auto}
+  .g4{grid-column:1/-1;grid-row:auto}
+  .info>div{grid-template-columns:1fr;gap:.3rem}
+  .info dt{padding-top:0}
+  .contact__cta .btn{flex:1 1 100%}
+  .bar__end .btn--sm{padding:0 .9rem}
+  .sec-head{align-items:flex-start}
+}
+@media (max-width:380px){.logo{font-size:1.5rem}.bar__end .btn--sm{letter-spacing:.1em}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+@media print{
+  .top{position:static}
+  .rv{opacity:1!important;transform:none!important}
+  .hero{min-height:0}
+}
+</style>
+</head>
+<body>
+
+<!-- Símbolos usados nos espaços provisórios das fotos -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="a-sun" viewBox="0 0 48 48"><path d="M8 34a16 16 0 0 1 32 0M24 6v6M9 14l4 4M39 14l-4 4M3 34h6M39 34h6M8 42h32"/></symbol>
+  <symbol id="a-scissors" viewBox="0 0 64 64"><circle cx="16" cy="46" r="8"/><circle cx="16" cy="18" r="8"/><path d="M22 22l36 28M22 42L58 14"/></symbol>
+  <symbol id="a-polish" viewBox="0 0 64 64"><rect x="20" y="30" width="24" height="26" rx="8"/><path d="M26 30v-8h12v8M29 22V8h6v14"/></symbol>
+  <symbol id="a-brow" viewBox="0 0 64 64"><path d="M6 30c10-14 30-16 52-2M12 46c8-8 24-10 40-2"/></symbol>
+  <symbol id="a-mirror" viewBox="0 0 64 64"><ellipse cx="32" cy="26" rx="14" ry="19"/><path d="M32 45v14M22 59h20"/></symbol>
+</defs></svg>
+
+<!-- ============ CABEÇALHO ============ -->
+<header class="top" id="hd">
+  <div class="wrap bar">
+    <a class="logo" href="#topo" aria-label="Studio Aurora, início"><small>Studio</small>Aurora</a>
+    <nav id="menu" aria-label="Principal">
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="bar__end">
+      <a class="btn btn--sm" href="https://wa.me/5519900000000" data-wa target="_blank" rel="noopener">WhatsApp</a>
+      <button class="burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ 1. APRESENTAÇÃO ============ -->
+  <section class="hero" id="topo">
+    <div class="hero__txt">
+      <p class="eyebrow">Cabelo · Unhas · Estética</p>
+      <h1>Seu momento<br>de <em>brilhar.</em></h1>
+      <p class="lead">Cuidado com técnica e carinho, do cabelo às unhas e à estética. Atendimento por ordem de chegada, de segunda a sábado.</p>
+      <div class="hero__cta">
+        <a class="btn" href="https://wa.me/5519900000000" data-wa target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <a class="link" href="#servicos">Conhecer serviços</a>
+      </div>
+      <p class="hero__meta"><span>Segunda a sábado</span><span>Ordem de chegada</span><span>08h – 20h</span></p>
+    </div>
+    <div class="hero__img">
+      <figure class="ph ph--wine" data-photo="hero" data-alt="Studio Aurora: ambiente do salão" role="img" aria-label="Espaço reservado para a foto principal do salão">
+        <svg class="art" aria-hidden="true"><use href="#a-sun"/></svg>
+        <span class="ph__path">img/hero.jpg</span>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ 2. SERVIÇOS ============ -->
+  <section id="servicos">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="eyebrow">Serviços</p><h2>Cuidado em cada <em>detalhe.</em></h2></div>
+        <p>Algumas das categorias do salão. Os valores você consulta na recepção ou pelo WhatsApp.</p>
+      </div>
+      <div class="svc">
+        <article class="rv">
+          <figure class="ph ph--sand" data-photo="cabelo" data-alt="Cabelo" role="img" aria-label="Espaço reservado para a foto de cabelo">
+            <svg class="art" aria-hidden="true"><use href="#a-scissors"/></svg><span class="ph__path">img/cabelo.jpg</span>
+          </figure>
+          <div class="svc__t"><h3>Cabelo</h3><span class="svc__n">01</span></div>
+          <p>Cortes, escovas, cor e alisamentos.</p>
+          <ul><li>Corte e escova</li><li>Alisamentos e botox capilar</li><li>Mechas e luzes</li></ul>
+        </article>
+        <article class="rv">
+          <figure class="ph ph--blush" data-photo="unhas" data-alt="Unhas" role="img" aria-label="Espaço reservado para a foto de unhas">
+            <svg class="art" aria-hidden="true"><use href="#a-polish"/></svg><span class="ph__path">img/unhas.jpg</span>
+          </figure>
+          <div class="svc__t"><h3>Unhas</h3><span class="svc__n">02</span></div>
+          <p>Mãos e pés sempre bem cuidados.</p>
+          <ul><li>Pé e mão</li><li>Esmaltação em gel <small>Agendar</small></li><li>Podologia <small>Agendar</small></li></ul>
+        </article>
+        <article class="rv">
+          <figure class="ph ph--taupe" data-photo="estetica" data-alt="Estética" role="img" aria-label="Espaço reservado para a foto de estética">
+            <svg class="art" aria-hidden="true"><use href="#a-brow"/></svg><span class="ph__path">img/estetica.jpg</span>
+          </figure>
+          <div class="svc__t"><h3>Estética</h3><span class="svc__n">03</span></div>
+          <p>Design e cuidados para o dia a dia.</p>
+          <ul><li>Buço e queixo</li><li>Axila e meia perna</li><li>Perna inteira e virilha</li></ul>
+        </article>
+      </div>
+      <div class="svc-note rv">
+        <p>Esmaltação em gel e podologia precisam de agendamento.</p>
+        <a class="link" href="https://wa.me/5519900000000" data-wa target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. GALERIA ============ -->
+  <section class="gal-sec" id="galeria">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="eyebrow">Galeria</p><h2>O salão, <em>de perto.</em></h2></div>
+      </div>
+      <div class="gal">
+        <figure class="ph ph--wine g1" data-photo="g1" data-alt="Ambiente do Studio Aurora" role="img" aria-label="Espaço reservado para a foto do ambiente">
+          <svg class="art" aria-hidden="true"><use href="#a-mirror"/></svg><span class="ph__path">img/galeria-1.jpg</span><span class="tag">O ambiente</span>
+        </figure>
+        <figure class="ph ph--sand g2" data-photo="g2" data-alt="Cabelo finalizado" role="img" aria-label="Espaço reservado para foto de cabelo">
+          <svg class="art" aria-hidden="true"><use href="#a-scissors"/></svg><span class="ph__path">img/galeria-2.jpg</span><span class="tag">Cabelo</span>
+        </figure>
+        <figure class="ph ph--blush g3" data-photo="g3" data-alt="Unhas esmaltadas" role="img" aria-label="Espaço reservado para foto de unhas">
+          <svg class="art" aria-hidden="true"><use href="#a-polish"/></svg><span class="ph__path">img/galeria-3.jpg</span><span class="tag">Unhas</span>
+        </figure>
+        <figure class="ph ph--taupe g4" data-photo="g4" data-alt="Cuidados de estética" role="img" aria-label="Espaço reservado para foto de estética">
+          <svg class="art" aria-hidden="true"><use href="#a-brow"/></svg><span class="ph__path">img/galeria-4.jpg</span><span class="tag">Cuidados</span>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. CONTATO ============ -->
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <div class="rv">
+        <p class="eyebrow">Contato</p>
+        <h2>Venha nos <em>visitar.</em></h2>
+        <p class="lead">Atendimento por ordem de chegada, de segunda a sábado.</p>
+        <div class="contact__cta">
+          <a class="btn btn--light" href="https://wa.me/5519900000000" data-wa target="_blank" rel="noopener">Chamar no WhatsApp</a>
+          <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20das%20Ac%C3%A1cias%2C%20480%2C%20Campinas%20SP" data-map target="_blank" rel="noopener">Abrir no mapa</a>
+        </div>
+      </div>
+      <dl class="info rv">
+        <div><dt>WhatsApp</dt><dd><b data-cfg="phoneText">(19) 90000-0000</b><i class="demo">Dado fictício</i></dd></div>
+        <div><dt>Endereço</dt><dd><b data-cfg="address">Rua das Acácias, 480</b><i class="demo">Dado fictício</i><span data-cfg="city">Centro, Campinas – SP</span></dd></div>
+        <div><dt>Horários</dt><dd>Segunda a sábado<span>08h às 20h · Domingo fechado</span></dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Studio Aurora · Site demonstrativo, empresa fictícia.</span>
+    <a href="#topo">Voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   CONFIGURAÇÃO — edite apenas este bloco para adaptar o site a um salão
+   ===================================================================== */
+var CONFIG = {
+  phone: "5519900000000",                 // WhatsApp com DDI + DDD (só números)
+  message: "Olá! Vim pelo site do Studio Aurora.",
+  phoneText: "(19) 90000-0000",           // como o número aparece na tela
+  address: "Rua das Acácias, 480",
+  city: "Centro, Campinas – SP",
+  mapQuery: "Rua das Acácias, 480, Campinas SP",
+  /* Fotos: coloque os arquivos na pasta img/ com estes nomes.
+     Enquanto o arquivo não existir, aparece o espaço provisório. */
+  photos: {
+    hero: "img/hero.jpg",
+    cabelo: "img/cabelo.jpg",
+    unhas: "img/unhas.jpg",
+    estetica: "img/estetica.jpg",
+    g1: "img/galeria-1.jpg",
+    g2: "img/galeria-2.jpg",
+    g3: "img/galeria-3.jpg",
+    g4: "img/galeria-4.jpg"
+  }
+};
+
+(function () {
+  var $ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
+
+  /* WhatsApp, mapa e dados de contato a partir do CONFIG */
+  var wa = "https://wa.me/" + CONFIG.phone + "?text=" + encodeURIComponent(CONFIG.message);
+  var map = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CONFIG.mapQuery);
+  $("[data-wa]").forEach(function (a) { a.href = wa; });
+  $("[data-map]").forEach(function (a) { a.href = map; });
+  $("[data-cfg]").forEach(function (el) { var v = CONFIG[el.getAttribute("data-cfg")]; if (v) el.textContent = v; });
+
+  /* Fotos: só entram se o arquivo realmente carregar */
+  $(".ph[data-photo]").forEach(function (box) {
+    var src = CONFIG.photos[box.getAttribute("data-photo")];
+    if (!src) return;
+    var label = $(".ph__path", box)[0]; if (label) label.textContent = src;
+    var im = new Image();
+    im.onload = function () {
+      im.alt = box.getAttribute("data-alt") || "";
+      box.insertBefore(im, box.firstChild);
+      box.classList.add("has");
+      box.removeAttribute("role"); box.removeAttribute("aria-label");
+    };
+    im.src = src;
+  });
+
+  /* Cabeçalho */
+  var hd = document.getElementById("hd");
+  function onScroll() { hd.classList.toggle("is-scrolled", window.scrollY > 20); }
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  /* Menu mobile */
+  var burger = document.getElementById("burger"), menu = document.getElementById("menu");
+  function setMenu(open) {
+    menu.classList.toggle("open", open);
+    hd.classList.toggle("is-open", open);
+    document.body.classList.toggle("menu-open", open);
+    burger.setAttribute("aria-expanded", open);
+    burger.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+  }
+  burger.addEventListener("click", function () { setMenu(!menu.classList.contains("open")); });
+  menu.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+  window.addEventListener("resize", function () { if (window.innerWidth > 860) setMenu(false); });
+
+  /* Revelar ao rolar — sem JS, em impressão/PDF ou com movimento reduzido, tudo fica visível */
+  var els = $(".rv");
+  if (!("IntersectionObserver" in window) || navigator.webdriver ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  els.forEach(function (el) { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("in"); });
+  document.documentElement.classList.add("anim");
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: "0px 0px -5% 0px" });
+  els.forEach(function (el) { if (!el.classList.contains("in")) io.observe(el); });
+  window.addEventListener("beforeprint", function () { els.forEach(function (el) { el.classList.add("in"); }); });
+})();
+</script>
+</body>
+</html>
